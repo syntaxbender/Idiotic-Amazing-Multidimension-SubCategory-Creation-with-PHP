@@ -1,9 +1,6 @@
 <?php
 $test = [
-	1=>["CatID"=>1,"PrID"=>0,"Title"=>"Elektronik"], //upi yok echo
-	2=>["CatID"=>2,"PrID"=>0,"Title"=>"Gıda"], // upi yok echo
-	3=>["CatID"=>3,"PrID"=>0,"Title"=>"Spor"], //
-	4=>["CatID"=>4,"PrID"=>0,"Title"=>"Giyim"],
+
 	5=>["CatID"=>5,"PrID"=>1,"Title"=>"Bilgisayar"],
 	6=>["CatID"=>6,"PrID"=>1,"Title"=>"Telefon"],
 	7=>["CatID"=>7,"PrID"=>5,"Title"=>"laptop"],
@@ -21,8 +18,13 @@ $test = [
 	19=>["CatID"=>19,"PrID"=>17,"Title"=>"bisiklet"],
 	20=>["CatID"=>20,"PrID"=>17,"Title"=>"yüzme"],
 	21=>["CatID"=>21,"PrID"=>19,"Title"=>"gidon"],
-	22=>["CatID"=>22,"PrID"=>19,"Title"=>"sele"]
+	22=>["CatID"=>22,"PrID"=>19,"Title"=>"sele"],
+	1=>["CatID"=>1,"PrID"=>0,"Title"=>"Elektronik"],
+	2=>["CatID"=>2,"PrID"=>0,"Title"=>"Gıda"], 
+	3=>["CatID"=>3,"PrID"=>0,"Title"=>"Spor"],
+	4=>["CatID"=>4,"PrID"=>0,"Title"=>"Giyim"]
 ];
+
 function upFinder($arr,$id){
 	$temp = [];
 	$temp[] = $id;
@@ -40,8 +42,8 @@ foreach ($test as $item){
 	foreach ($lolo as $value){
 		$arrstr .= '['.$value.'][\'SubCats\']';
 	}
-	$arrstr = $arrstr.'[] = [\'CatID\'=>'.$item['CatID'].', \'Title\'=>\''.$item['Title'].'\', \'SubCats\'=>[]];';
-	eval($arrstr); // this is so amazing and vulnerable!
+	eval($arrstr.'[\'CatID\'] = $item[\'CatID\'];'); // this is so amazing and vulnerable!
+	eval($arrstr.'[\'Title\'] = $item[\'Title\'];'); // this is so amazing and vulnerable!
 }
 print_r($newarr);
 ?>
