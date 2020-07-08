@@ -35,7 +35,7 @@ function upFinder($arr,$id){
 }
 $newarr = [];
 foreach ($test as $item){
-	$lolo = up_finder($test,$item["CatID"]);
+	$lolo = upFinder($test,$item["CatID"]);
 	$arrstr = '$newarr';
 	foreach ($lolo as $value){
 		$arrstr .= '['.$value.'][\'SubCats\']';
